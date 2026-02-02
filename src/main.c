@@ -20,6 +20,12 @@ bool initialize_window(void) {
     return false;
   }
 
+  // Fullscreen resolution
+  SDL_DisplayMode display_mode;
+  SDL_GetCurrentDisplayMode(0, &display_mode);
+  window_width = display_mode.w;
+  window_height = display_mode.h;
+
   // Create a SDL window
   window =
       SDL_CreateWindow(NULL, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
@@ -37,6 +43,9 @@ bool initialize_window(void) {
     fprintf(stderr, "Error creating SDL renderer.\n");
     return false;
   }
+
+  // Real fullscreen
+  SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
   
   return true;
 }
@@ -80,6 +89,11 @@ void clear_color_buffer(uint32_t color) {
       color_buffer[(window_width * y) + x] = color;
     }
   }
+}
+
+void draw_grid() {
+  // TODO: ex 1
+  // Draw a lina in every col/row who is multiple of 10
 }
 
 void render(void) {
