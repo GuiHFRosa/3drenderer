@@ -92,12 +92,20 @@ void clear_color_buffer(uint32_t color) {
 }
 
 void draw_grid(uint32_t color) {
-  // TODO: ex 1
-  // Draw a lina in every col/row who is multiple of 10
   for (int y = 0; y < window_height; y++) {
     for (int x = 0; x < window_width; x++) {
       if (y % 10 == 0 || x % 10 == 0) {
         color_buffer[(window_width * y) + x] = color;
+      }
+    }
+  }
+}
+
+void draw_rectangle(int x, int y, int width, int height, uint32_t color) {
+  for (int yAxis = 0; yAxis < window_height; yAxis++) {
+    for (int xAxis = 0; xAxis < window_width; xAxis++) {
+      if (xAxis >= x && xAxis < x + width + 1 && yAxis >= y && yAxis < y + height + 1) {
+        color_buffer[(window_width * yAxis) + xAxis] = color;
       }
     }
   }
@@ -108,6 +116,7 @@ void render(void) {
   SDL_RenderClear(renderer);
 
   draw_grid(0xAD27F5FF);
+  draw_rectangle(600, 400, 300, 150, 0xAD27F5FF);
 
   render_color_buffer();
   clear_color_buffer(0x000000FF);
