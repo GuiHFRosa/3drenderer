@@ -58,6 +58,12 @@ void draw_grid(uint32_t color) {
   }
 }
 
+void draw_pixel(int x, int y, uint32_t color) {
+  if (x < window_width && y < window_height) {
+    color_buffer[(window_width * y) + x] = color;
+  }
+}
+
 //TODO: Improve implement, I don't need iterare the entire buffer
 void draw_rectangle(int x, int y, int width, int height, uint32_t color) {
   for (int yAxis = 0; yAxis < window_height; yAxis++) {

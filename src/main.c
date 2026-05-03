@@ -30,14 +30,15 @@ void process_input(void) {
 void update(void) {}
 
 void render(void) {
-  SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+  SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0);
   SDL_RenderClear(renderer);
 
-  draw_grid(0xAD27F5FF);
+  //draw_grid(0xFFFFFFFF);
+  draw_pixel(20, 20, 0xFFFFFF00);
   draw_rectangle(800, 600, 300, 150, 0xAD27F5FF);
 
   render_color_buffer();
-  clear_color_buffer(0x000000FF);
+  clear_color_buffer(0xFF000000);
 
   SDL_RenderPresent(renderer);
 }
