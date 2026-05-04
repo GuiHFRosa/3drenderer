@@ -49,11 +49,9 @@ bool initialize_window(void) {
 }
 
 void draw_grid(uint32_t color) {
-  for (int y = 0; y < window_height; y++) {
-    for (int x = 0; x < window_width; x++) {
-      if (y % 10 == 0 || x % 10 == 0) {
-        color_buffer[(window_width * y) + x] = color;
-      }
+  for (int y = 0; y < window_height; y += 10) {
+    for (int x = 0; x < window_width; x += 10) {
+      color_buffer[(window_width * y) + x] = color;
     }
   }
 }
