@@ -12,4 +12,10 @@ typedef struct {
   float z;
 } vec3_t;
 
+typedef struct {
+  vec3_t position;
+  vec3_t rotation;
+  float vision_angle;
+} camera_t;
+
 #endif
